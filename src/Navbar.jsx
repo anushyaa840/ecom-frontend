@@ -1,33 +1,21 @@
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ cartCount }) {
   return (
-    <nav
-      style={{
-        background: "#5b4b63",
-        padding: "15px",
-        display: "flex",
-        justifyContent: "space-between",
-        color: "white",
-      }}
-    >
-      <h2>AS-shopping</h2>
-
-      <div style={{ display: "flex", gap: "20px" }}>
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-          Home
-        </Link>
-        <Link to="/products" style={{ color: "white", textDecoration: "none" }}>
-          Products
-        </Link>
-        <Link to="/cart" style={{ color: "white", textDecoration: "none" }}>
-          Cart
-        </Link>
-        <Link to="/contact" style={{ color: "white", textDecoration: "none" }}>
-          Contact Us
-        </Link>
+    <header className="navbar">
+      <div className="navbar-brand">
+        <h1>🛍️ AS Shop</h1>
       </div>
-    </nav>
+      
+      <nav className="navbar-links">
+        <Link to="/">Home</Link>
+        <Link to="/products">Products</Link>
+        <Link to="/cart" className="cart-link">
+          🛒 Cart {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+        </Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+    </header>
   );
 }
 
